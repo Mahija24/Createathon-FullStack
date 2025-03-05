@@ -1,5 +1,5 @@
 "use client"
-
+import { MessageSquare } from 'lucide-react';
 import { BrowserRouter as Router, Routes, Route, Navigate, Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { Code } from "lucide-react"

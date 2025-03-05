@@ -6,4 +6,10 @@ export default defineConfig({
   define: {
     'process.env': {},  // Ensure process.env is defined
   },
+  build: {
+    rollupOptions: {
+      external: ['lucide-react']
+    }
+  }
+
 });
