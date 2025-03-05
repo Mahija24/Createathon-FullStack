@@ -6,7 +6,7 @@ const ProfilePage = () => {
 
   const mockUserData = {
     id: userId,
-    name: "madhu14",
+    name: "Sanjay29",
     title: "Software Engineer",
     stats: {
       challenges: 150,
@@ -124,7 +124,7 @@ const ProfilePage = () => {
           boxShadow: "0 0 0 2px rgba(59, 130, 246, 0.3)",
         }}
       >
-        M
+        S
       </div>
 
       {/* Profile Component */}

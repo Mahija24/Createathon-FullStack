@@ -8,8 +8,7 @@ import "../styles/SignIn.css" // Reusing the same styles
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -37,11 +36,8 @@ const SignUp = () => {
 
   const validateForm = () => {
     const newErrors = {}
-    if (!formData.first_name.trim()) {
-      newErrors.first_name = "First name is required"
-    }
-    if (!formData.last_name.trim()) {
-      newErrors.last_name = "Last name is required"
+    if (!formData.username.trim()) {
+      newErrors.username = "Username is required"
     }
     if (!formData.email.trim()) {
       newErrors.email = "Email is required"
@@ -71,13 +67,11 @@ const SignUp = () => {
     setIsLoading(true)
 
     try {
-      // Sending correct data format to backend
+      // In a real app, you would send this data to your backend API
       const response = await authService.register({
-        first_name: formData.first_name,
-        last_name: formData.last_name,
+        username: formData.username,
         email: formData.email,
         password: formData.password,
-        password2: formData.confirmPassword, // Ensuring password2 is sent
       })
 
       console.log("Registration successful:", response)
@@ -90,7 +84,7 @@ const SignUp = () => {
     } catch (err) {
       console.error("Registration error:", err)
       setErrors({
-        general: err.response?.data || "Registration failed. Please try again.",
+        general: err.message || "Registration failed. Please try again.",
       })
     } finally {
       setIsLoading(false)
@@ -118,31 +112,17 @@ const SignUp = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="first_name">First Name</label>
+            <label htmlFor="username">Username</label>
             <input
               type="text"
-              id="first_name"
-              name="first_name"
-              value={formData.first_name}
+              id="username"
+              name="username"
+              value={formData.username}
               onChange={handleChange}
               required
               disabled={isLoading || success}
             />
-            {errors.first_name && <div className="error-message">{errors.first_name}</div>}
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="last_name">Last Name</label>
-            <input
-              type="text"
-              id="last_name"
-              name="last_name"
-              value={formData.last_name}
-              onChange={handleChange}
-              required
-              disabled={isLoading || success}
-            />
-            {errors.last_name && <div className="error-message">{errors.last_name}</div>}
+            {errors.username && <div className="error-message">{errors.username}</div>}
           </div>
 
           <div className="form-group">
@@ -208,3 +188,4 @@ const SignUp = () => {
 }
 
 export default SignUp
+
